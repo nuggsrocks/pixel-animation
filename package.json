@@ -4,6 +4,7 @@
   "description": "html5 canvas pixel animation",
   "main": "server.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/nuggsrocks/pixel-animation/issues"
   },
-  "homepage": "https://github.com/nuggsrocks/pixel-animation#readme"
+  "homepage": "https://github.com/nuggsrocks/pixel-animation#readme",
+  "devDependencies": {
+    "eslint": "^8.8.0"
+  }
 }
