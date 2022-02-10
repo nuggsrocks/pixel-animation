@@ -1,0 +1,22 @@
+{
+  "name": "pixel-animation",
+  "version": "1.0.0",
+  "description": "html5 canvas pixel animation",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuggsrocks/pixel-animation.git"
+  },
+  "author": {
+    "name": "Matthew Fisher",
+    "email": "mattfishcodes@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nuggsrocks/pixel-animation/issues"
+  },
+  "homepage": "https://github.com/nuggsrocks/pixel-animation#readme"
+}
