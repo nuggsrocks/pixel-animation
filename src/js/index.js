@@ -1,4 +1,4 @@
-/* global obtainImageData */
+const obtainImageData = require('./obtainImageData')
 
 const img = new Image()
 
