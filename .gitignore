@@ -1,0 +1,6 @@
+# intellij IDEA
+.idea/
+
+# node
+node_modules/
+
