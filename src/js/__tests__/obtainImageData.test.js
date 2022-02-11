@@ -2,18 +2,9 @@ const obtainImageData = require('../obtainImageData')
 
 describe('obtainImageData', () => {
   it('should draw image on canvas and then get pixel data', () => {
-    const mockImage = {width: 10, height: 5}
-    const mockCanvas = {
-      getContext: (type) => {
-        if (type === '2d') {
-          return mockCtx
-        }
-      }
-    }
-    const mockCtx = {
-      drawImage: jest.fn(),
-      getImageData: jest.fn()
-    }
+    const mockImage = new Image(10, 5)
+    const mockCanvas = document.createElement('canvas')
+    const mockCtx = mockCanvas.getContext('2d')
 
     obtainImageData(mockImage, mockCanvas)
 
