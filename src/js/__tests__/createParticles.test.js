@@ -8,6 +8,6 @@ describe('createParticles', () => {
 
     const expected = Array.from(new Array(numOfParticles), () => ({ x: 0, y: 0, size, angle }))
 
-    expect(createParticles(numOfParticles, size, angle)).toEqual(expected)
+    expect(createParticles(numOfParticles, { size, angle })).toEqual(expected)
   })
 })
