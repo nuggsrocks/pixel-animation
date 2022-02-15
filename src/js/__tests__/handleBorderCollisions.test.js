@@ -1,26 +1,24 @@
 const handleBorderCollisions = require('../handleBorderCollisions')
 
 describe('handleBorderCollisions', () => {
-  it('should set position to zero if outside canvas border', () => {
-    const particles = [
-      { x: 0, y: -10 },
-      { x: -10, y: 0 },
-      { x: 20, y: 30 },
-      { x: 40, y: 20 }
-    ]
-
+  describe('resets position of particles if they are outside canvas border (resets to opposite side)', () => {
     const canvas = document.createElement('canvas')
 
     canvas.width = 25
     canvas.height = 25
 
-    const expected = particles.map(particle => ({
-      x: particle.x < 0 ? canvas.width : particle.x > canvas.width ? 0 : particle.x,
-      y: particle.y < 0 ? canvas.height : particle.y > canvas.height ? 0 : particle.y
-    }))
+    it.each([
+      { particle: { x: 0, y: -10 }, expected: { x: 0, y: canvas.height } },
+      { particle: { x: -10, y: 0 }, expected: { x: canvas.width, y: 0 } },
+      { particle: { x: canvas.width - 5, y: canvas.height + 5 }, expected: { x: canvas.width - 5, y: 0 } },
+      { particle: { x: canvas.width + 10, y: -10 }, expected: { x: 0, y: canvas.height } }
+    ])('should reset position of $particle to $expected', ({
+      particle,
+      expected,
+    }) => {
+      handleBorderCollisions([particle], canvas)
 
-    handleBorderCollisions(particles, canvas)
-
-    expect(particles).toEqual(expected)
+      expect(particle).toEqual(expected)
+    })
   })
 })

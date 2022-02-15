@@ -1,21 +1,32 @@
 const updateParticlePositions = require('../updateParticlePositions')
 
 describe('updateParticlePositions', () => {
-  it('should update each particle\'s position according to its angle', () => {
-    const particles = Array.from(new Array(10), () => ({
-      x: Math.random() * 500,
-      y: Math.random() * 500,
-      angle: Math.random() * Math.PI * 2
-    }))
+  describe('updates each particle\'s position according to its angle', () => {
+    let testCases = []
+    for (let i = 0; i < 10; i++) {
+      const testCase = {
+        particle: {
+          x: Math.random() * 25,
+          y: Math.random() * 25,
+          angle: Math.random() * Math.PI * 2
+        }
+      }
+      testCase.expected = {
+        x: testCase.particle.x + Math.cos(testCase.particle.angle),
+        y: testCase.particle.y + Math.sin(testCase.particle.angle)
+      }
 
-    const expected = particles.map(particle => ({
-      x: particle.x + Math.cos(particle.angle),
-      y: particle.y + Math.sin(particle.angle),
-      angle: particle.angle
-    }))
+      testCases.push(testCase)
+    }
 
-    updateParticlePositions(particles)
+    it.each(
+      testCases
+    )('should update position of $particle to $expected', ({ particle, expected }) => {
 
-    expect(particles).toEqual(expected)
+      updateParticlePositions([particle])
+
+      expect(particle).toHaveProperty('x', expected.x)
+      expect(particle).toHaveProperty('y', expected.y)
+    })
   })
 })

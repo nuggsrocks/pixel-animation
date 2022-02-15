@@ -2,7 +2,7 @@ const createParticles = require('../createParticles')
 
 describe('createParticles', () => {
   it('should return list of given number of particle objects with given attributes', () => {
-    const numOfParticles = 10
+    const numOfParticles = 1000
     const size = 5
     const angle = Math.PI
 
