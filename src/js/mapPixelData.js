@@ -13,9 +13,7 @@ module.exports = (imageData) => {
 
       mappedImg[row][col] = {
         brightness,
-        red,
-        green,
-        blue
+        color: `rgb(${red},${green},${blue})`
       }
     }
   }
